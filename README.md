@@ -44,3 +44,37 @@ II. 전처리
   
 III. 모델별 실험
 --------
+* 사용모델: Random Forest, XGB, LGBM, SVR
+* 성능지표: MAE, MSE, RMSE, r2 score
+* 지표별 특징
+  1) MAE (Mean Absolute Error)
+실제 값과 예측값의 차이를 절댓값으로 변환해 평균한 것
+
+  2) MSE (Mean Squared Log Error)
+실제 값과 예측값의 차이를 제곱해 평균한 것
+
+  3) RMSE (Root Mean Squared Eerror)
+MSE 같은 오류의 제곱을 구할때 실제 오류 평균보다 더 커지는 특성이 있으므로 MSE에 루트를 씌운 것
+
+  4) R 제곱
+분산 기반으로 예측 성능을 평가한다. 실제 값의 분싼 대비 예측값의 분산 비율을 지표로 하며, 1에 가까울 수록 예측 정확도가 높다. 
+
+실험 시 SVR 모델도 학습을 시켰지만 너무나 많은 시간 소요로인해 실험에서 배제시켰다.
+```
+  * 모델별 주요 지표 비교
+
+  Model : Random Forest
+  val  RMSE:  0.151 , r2 score:  0.977
+  Test RMSE:  0.148 , r2 score:  0.976
+  ------------------------------------
+  Model : XGB
+  val  RMSE:  0.14 ,  r2 score:  0.98
+  Test RMSE:  0.131 , r2 score:  0.982
+  ------------------------------------
+  Model : LGBM
+  val  RMSE:  0.155 , r2 score:  0.976
+  Test RMSE:  0.149 , r2 score:  0.976
+  ```
+
+세 가지 모델이 거의 비슷한 성능을 보여줬지만 학습시간에서 Random Forest 모델은 697초, XGB 모델은 3070초, LGBM 모델은 62초의 성능으로
+LGBM 모델이 압도적으로 짧은 학습시간을 보여줘 선정하게 되었다.
